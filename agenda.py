@@ -41,6 +41,18 @@ def editar_contato(contatos, indice_contato, dado_editar, novo_nome=None, novo_t
     return
 
 
+def editar_favorito(contatos, indice_contato):
+    indice_contato_ajustado = int(indice_contato) - 1
+    if indice_contato_ajustado >= 0 and indice_contato_ajustado < len(contatos):
+        if contatos[indice_contato_ajustado]["favorito"]:
+            contatos[indice_contato_ajustado]["favorito"] = False
+            print(f"Contato {indice_contato} removido dos favoritos")
+        else:
+            contatos[indice_contato_ajustado]["favorito"] = True
+            print(f"Contato {indice_contato} adicionados aos favoritos")
+    return
+
+
 contatos = []
 
 while True:
@@ -83,6 +95,12 @@ while True:
             novo_email = input("Digite o novo E-mail: ")
         editar_contato(contatos, indice_contato, dado_editar,
                        novo_nome, novo_telefone, novo_email)
+
+    elif escolha == "4":
+        ver_contatos(contatos)
+        indice_contato = input(
+            "Digite o contato a marcar ou desmarcar como favorito: ")
+        editar_favorito(contatos, indice_contato)
 
     elif escolha == "7":
         break
