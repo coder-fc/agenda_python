@@ -53,6 +53,18 @@ def editar_favorito(contatos, indice_contato):
     return
 
 
+def mostra_favoritos(contatos):
+    print("\nContatos favoritos:")
+    for indice, contato in enumerate(contatos, start=1):
+        if contato["favorito"]:
+            nome = contato["nome"]
+            telefone = contato["telefone"]
+            email = contato["email"]
+            print(f"{indice}. Nome do contato: {nome} - Telefone: {
+                telefone} - E-mail: {email} ☆")
+    return
+
+
 contatos = []
 
 while True:
@@ -101,6 +113,9 @@ while True:
         indice_contato = input(
             "Digite o contato a marcar ou desmarcar como favorito: ")
         editar_favorito(contatos, indice_contato)
+
+    elif escolha == "5":
+        mostra_favoritos(contatos)
 
     elif escolha == "7":
         break
