@@ -18,6 +18,29 @@ def ver_contatos(contatos):
     return
 
 
+def editar_contato(contatos, indice_contato, dado_editar, novo_nome=None, novo_telefone=None, novo_email=None):
+    indice_contato_ajustado = int(indice_contato) - 1
+    if indice_contato_ajustado >= 0 and indice_contato_ajustado < len(contatos):
+        if dado_editar == "1":
+            if novo_nome is not None:
+                contatos[indice_contato_ajustado]["nome"] = novo_nome
+                print(f"Nome do contato {
+                      indice_contato} atualizado para {novo_nome}")
+        elif dado_editar == "2":
+            if novo_telefone is not None:
+                contatos[indice_contato_ajustado]["telefone"] = novo_telefone
+                print(f"Telefone do contato {
+                      indice_contato} atualizado para {novo_telefone}.")
+        elif dado_editar == "3":
+            if novo_email is not None:
+                contatos[indice_contato_ajustado]["email"] = novo_email
+                print(
+                    f"E-mail do contato {indice_contato} atualizado para {novo_email}.")
+    else:
+        print("Contato não existe")
+    return
+
+
 contatos = []
 
 while True:
@@ -40,6 +63,26 @@ while True:
 
     elif escolha == "2":
         ver_contatos(contatos)
+
+    elif escolha == "3":
+        ver_contatos(contatos)
+        indice_contato = input("Digite o contato a editar: ")
+        print("\nDado a editar: ")
+        print("1. Nome")
+        print("2. Telefone")
+        print("3. E-mail")
+        dado_editar = input("Digite o dado a editar: ")
+        novo_nome = None
+        novo_telefone = None
+        novo_email = None
+        if dado_editar == "1":
+            novo_nome = input("Digite o novo nome: ")
+        elif dado_editar == "2":
+            novo_telefone = input("Digite o novo telefone: ")
+        elif dado_editar == "3":
+            novo_email = input("Digite o novo E-mail: ")
+        editar_contato(contatos, indice_contato, dado_editar,
+                       novo_nome, novo_telefone, novo_email)
 
     elif escolha == "7":
         break
