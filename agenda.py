@@ -50,6 +50,8 @@ def editar_favorito(contatos, indice_contato):
         else:
             contatos[indice_contato_ajustado]["favorito"] = True
             print(f"Contato {indice_contato} adicionados aos favoritos")
+    else:
+        print("Contato não existe")
     return
 
 
@@ -62,6 +64,17 @@ def mostra_favoritos(contatos):
             email = contato["email"]
             print(f"{indice}. Nome do contato: {nome} - Telefone: {
                 telefone} - E-mail: {email} ☆")
+    return
+
+
+def apagar_contato(contatos, indice_contato):
+    indice_contato_ajustado = int(indice_contato) - 1
+    if indice_contato_ajustado >= 0 and indice_contato_ajustado < len(contatos):
+        del contatos[indice_contato_ajustado]
+        print(
+            f"Contato {indice_contato} removido com sucesso")
+    else:
+        print("Contato não existe")
     return
 
 
@@ -117,8 +130,12 @@ while True:
     elif escolha == "5":
         mostra_favoritos(contatos)
 
+    elif escolha == "6":
+        ver_contatos(contatos)
+        indice_contato = input("Digite o contato a ser removido: ")
+        apagar_contato(contatos, indice_contato)
+
     elif escolha == "7":
         break
-
 
 print("Programa finalizado!")
