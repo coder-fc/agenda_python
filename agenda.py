@@ -1,3 +1,13 @@
+def adiconar_contato(contatos, nome, telefone, email):
+    contato = {"nome": nome, "telefone": telefone,
+               "email": email, "favorito": False}
+    contatos.append(contato)
+    print(f"Contato {nome} foi adicionado com sucesso!")
+    return
+
+
+contatos = []
+
 while True:
     print("\nMenu da agenda: ")
     print("1. Adicionar contato")
@@ -10,5 +20,14 @@ while True:
 
     escolha = input("Digite a opção desejada: ")
 
-    if escolha == "7":
+    if escolha == "1":
+        nome = input("Digite o nome do contato: ")
+        telefone = input("Digite o telefone: ")
+        email = input("Digite o email: ")
+        adiconar_contato(contatos, nome, telefone, email)
+
+    elif escolha == "7":
         break
+
+
+print("Programa finalizado!")
