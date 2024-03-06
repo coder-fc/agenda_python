@@ -6,6 +6,18 @@ def adiconar_contato(contatos, nome, telefone, email):
     return
 
 
+def ver_contatos(contatos):
+    print("\nLista de contatos: ")
+    for indice, contato in enumerate(contatos, start=1):
+        nome = contato["nome"]
+        telefone = contato["telefone"]
+        email = contato["email"]
+        favorito = "☆" if contato["favorito"] else " "
+        print(f"{indice}. Nome do contato: {nome} - Telefone: {
+              telefone} - E-mail: {email} {favorito}")
+    return
+
+
 contatos = []
 
 while True:
@@ -25,6 +37,9 @@ while True:
         telefone = input("Digite o telefone: ")
         email = input("Digite o email: ")
         adiconar_contato(contatos, nome, telefone, email)
+
+    elif escolha == "2":
+        ver_contatos(contatos)
 
     elif escolha == "7":
         break
